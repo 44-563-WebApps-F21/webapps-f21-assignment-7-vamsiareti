@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stack page</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			background-color: rgb(255, 174, 0);
+		}
+
+		.flex-container>div {
+			/*div children of the flex container*/
+			background-color: #fbff00;
+			margin: 10px;
+			padding: 20px;
+			font-size: 30px;
+		}
+
+		/* Responsive layout */
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: rgb(43, 255, 0);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<h2>Vamsi Krishna Areti builds a stack</h2>
+	<input id="inputElement" type="text"><br><br>
+	<div class="flex-container" id="target">
+		<div class="stack">row item 1</div>
+		<div class="stack">row item 2</div>
+		<div class="stack">row item 3</div>
+	</div><br>
+	<h4>Press the button to push element</h4>
+	<button onclick="makeNewDiv()">Push value</button>
+	<button onclick="popItem()">Pop</button>
+	<button onclick="zap()">Zap values</button>
+	<button onclick="unique()">Unique</button>
+</body>
+<script>
+	function makeNewDiv() {
+		let element = document.createElement("div")
+		let input = document.getElementById("inputElement")
+		element.innerHTML = input.value
+		element.className = "stack"
+		document.getElementById('target').appendChild(element)
+	}
+	function popItem() {
+		var s = document.getElementsByClassName("stack")
+		var length = s.length
+		if (length > 0)
+			s[length - 1].remove()
+	}
+	function zap() {
+		var s = document.getElementsByClassName("stack")
+		let input = document.getElementById("inputElement").value
+		if (s != undefined && s.length > 0) {
+			for (let i = 0; i < s.length; i++) {
+				if (s[i].innerHTML == input) {
+					var itemToBeRemoved = s[i].innerHTML
+					s[i].remove()
+					console.log(itemToBeRemoved)
+					i--
+				}
+			}
+		}
+	}
+
+	function unique() {
+		var items = document.getElementsByClassName("stack")
+		for (var i = 0; i < items.length; i++) {
+			for (var j = i + 1; j < items.length; j++) {
+				if (items[i].innerHTML == items[j].innerHTML) {
+					items[i].remove()
+					j--; i--
+				}
+			}
+		}
+	}
+
+</script>
+
+</html>
