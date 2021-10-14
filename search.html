@@ -16,6 +16,9 @@
     <p style="color: rgb(0, 140, 255);">Click on the squares to search for wild life</p>
     <p id="tries" style="color:rgb(255, 0, 0)">Number of tries is zero.</p>
     <p id="distance" style="color:rgb(0, 0, 0)">Distance is unknown.</p>
+    <button type="button" class="btn btn-primary" onclick="resetTriesAndLocation()">Reset All</button> 
+    
+    <p></p>
     <div class="row">
         <div class="col-sm-2"><img src="plant.jpeg" height="200" width="200"; id="image0" onclick="check(0)"></div>
         <div class="col-sm-2"><img src="plant.jpeg" height="200" width="200"; id="image1" onclick="check(1)"></div>
@@ -103,8 +106,23 @@
           let distance = Math.max(Math.abs(horizontal2-horizontal1),Math.abs(vertical2-vertical1));
           return distance;
       }
-        
- 
-      </script>
+      //Bonus
+      function resetTriesAndLocation() {
+      triesCount = 0;
+      animalLocation = Math.round(Math.random() * (23));
+      document.getElementById("tries").innerHTML = "Number of tries is zero";
+      distanceOfAnimal = "unknown"
+      document.getElementById("distance").innerHTML = "Distance is " + distanceOfAnimal;
+      for (var i = 0; i < 24; i++) {
+
+          document.getElementById(ids[i]).src = "plant.jpeg";
+      }
+
+  } 
+
+  
+  </script>
+  
 </body>
+
 </html>
